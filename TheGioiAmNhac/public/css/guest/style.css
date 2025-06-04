@@ -1,0 +1,190 @@
+/*
+|--------------------------------------------------------------------------
+| Guest Styles (Spotify-inspired Dark Theme)
+|--------------------------------------------------------------------------
+|
+| This file contains the CSS for the guest section of the application,
+| styled to resemble the Spotify web player.
+|
+*/
+
+:root {
+    --background-color: #121212; /* Dark background */
+    --card-color: #181818; /* Slightly lighter dark for cards */
+    --text-color: #ffffff; /* White text */
+    --link-color: #b3b3b3; /* Lighter gray for links */
+    --hover-color: #1db954; /* Spotify green for hover effects */
+    --header-color: #000000; /* Black header/nav background */
+}
+
+body {
+    font-family: 'Circular Std', 'Arial', sans-serif; /* Using a common font, ideally Circular Std */
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    min-height: 100vh; /* Ensure body takes full viewport height */
+}
+
+header {
+    background: var(--header-color); /* Black background */
+    color: var(--text-color); /* White text */
+    padding: 1rem 20px; /* Padding on sides */
+    display: flex; /* Use flexbox for layout */
+    justify-content: space-between; /* Space between items */
+    align-items: center; /* Vertically align items */
+    position: sticky; /* Make header sticky */
+    top: 0;
+    z-index: 1000; /* Ensure header is on top */
+}
+
+header .logo h1 {
+    margin: 0;
+    font-size: 1.8em;
+    color: var(--text-color);
+}
+
+nav {
+    background: var(--header-color); /* Black background for nav */
+    padding: 1rem 20px; /* Padding on sides */
+    margin-bottom: 20px; /* Space below nav */
+}
+
+nav a {
+    color: var(--link-color); /* Link color */
+    text-decoration: none;
+    margin-right: 20px; /* Space between links */
+    font-weight: bold;
+    transition: color 0.3s ease; /* Smooth transition */
+}
+
+nav a:last-child {
+    margin-right: 0;
+}
+
+nav a:hover {
+    color: var(--text-color); /* White on hover */
+}
+
+main {
+    padding: 20px;
+    max-width: 1300px; /* Wider content area */
+    margin: 0 auto; /* Center content, no top/bottom margin */
+}
+
+section {
+    margin-bottom: 40px; /* More space between sections */
+}
+
+section h2 {
+    color: var(--text-color); /* White heading color */
+    margin-top: 0;
+    margin-bottom: 20px; /* Space below heading */
+    font-size: 1.8em;
+}
+
+.card-container {
+    display: grid; /* Use grid for cards */
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Responsive grid */
+    gap: 20px; /* Space between grid items */
+}
+
+.card {
+    background: var(--card-color); /* Card background */
+    border-radius: 8px; /* Rounded corners */
+    padding: 15px; /* Padding inside card */
+    text-align: center; /* Center content */
+    transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+.card:hover {
+    background-color: #282828; /* Slightly lighter on hover */
+}
+
+.card img {
+    width: 100%; /* Image takes full width of card */
+    border-radius: 4px; /* Slightly rounded image corners */
+    margin-bottom: 10px; /* Space below image */
+}
+
+.card h3 {
+    color: var(--text-color);
+    font-size: 1em;
+    margin: 0 0 5px 0;
+    white-space: nowrap; /* Prevent text wrapping */
+    overflow: hidden;
+    text-overflow: ellipsis; /* Add ellipsis if text overflows */
+}
+
+.card p {
+    color: var(--link-color); /* Lighter color for secondary text */
+    font-size: 0.9em;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+footer {
+    text-align: center;
+    padding: 30px 0; /* More padding */
+    background: var(--header-color); /* Black background */
+    color: var(--link-color); /* Link color for text */
+    margin-top: 50px; /* Space above footer */
+}
+
+.social-icons {
+    margin-bottom: 20px; /* Space below icons */
+}
+
+.social-icon {
+    display: inline-block;
+    width: 40px; /* Size of the icon */
+    height: 40px; /* Size of the icon */
+    margin: 0 10px; /* Space between icons */
+    background-color: var(--card-color); /* Background color */
+    border-radius: 50%; /* Make it round */
+    background-size: 60%; /* Size of the icon image */
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: background-color 0.3s ease;
+}
+
+.social-icon:hover {
+     background-color: #282828; /* Slightly lighter on hover */
+}
+
+.social-icon.instagram {
+    background-image: url('https://cdnjs.cloudflare.com/ajax/libs/simple-icons/6.1.0/instagram.svg');
+}
+
+.social-icon.twitter {
+    background-image: url('https://cdnjs.cloudflare.com/ajax/libs/simple-icons/6.1.0/twitter.svg');
+}
+
+.social-icon.facebook {
+    background-image: url('https://cdnjs.cloudflare.com/ajax/libs/simple-icons/6.1.0/facebook.svg');
+}
+
+/* Basic responsive adjustment */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column; /* Stack items in header on smaller screens */
+    }
+    header .logo {
+        margin-bottom: 10px;
+    }
+    nav {
+        padding: 1rem 10px;
+    }
+    nav a {
+        margin-right: 10px;
+    }
+    main {
+        padding: 10px;
+    }
+    .card-container {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); /* Adjust grid for smaller screens */
+    }
+} 
