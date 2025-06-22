@@ -35,11 +35,11 @@ class CrudUserController extends Controller
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {
-            return redirect()->intended('list')
+            return redirect()->route('homepage')
                 ->withSuccess('Signed in');
         }
 
-        return redirect("login")->withSuccess('Login details are not valid');
+        return redirect()->route('dangnhap')->with('error', 'Login details are not valid');
     }
 
     /**
@@ -70,7 +70,7 @@ class CrudUserController extends Controller
             'password' => Hash::make($data['password'])
         ]);
 
-        return redirect("login");
+        return redirect()->route('dangnhap');
     }
 
     /**
@@ -138,7 +138,7 @@ class CrudUserController extends Controller
             return view('crud_user.list', ['users' => $users]);
         }
 
-        return redirect("login")->withSuccess('You are not allowed to access');
+        return redirect()->route('dangnhap')->with('error', 'You are not allowed to access');
     }
 
     /**
@@ -148,6 +148,6 @@ class CrudUserController extends Controller
         Session::flush();
         Auth::logout();
 
-        return Redirect('login');
+        return redirect('/');
     }
 }

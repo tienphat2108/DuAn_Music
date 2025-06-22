@@ -13,6 +13,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        $this->call(SongArtistSeeder::class);
+        $this->call(AlbumRadioSeeder::class);
+        $this->call(ChartSeeder::class);
+        $this->call(SuggestionSeeder::class);
         // User::factory(10)->create();
 
         User::factory()->create([

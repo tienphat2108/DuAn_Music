@@ -3,6 +3,14 @@
 use App\Http\Controllers\RoleController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CrudUserController;
+use App\Http\Controllers\HomepageController;
+use App\Http\Controllers\ArtistController;
+use App\Models\Song;
+use App\Models\Artist;
+use App\Models\Album;
+use App\Models\Radio;
+use App\Models\Chart;
+use App\Models\Suggestion;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,8 +42,35 @@ Route::get('list', [CrudUserController::class, 'listUser'])->name('user.list');
 //Roles
 Route::get('role', [RoleController::class, 'role'])->name('user.role');
 
-Route::get('signout', [CrudUserController::class, 'signOut'])->name('signout');
+Route::post('signout', [CrudUserController::class, 'signOut'])->name('signout');
+
+Route::get('/trangchu', [HomepageController::class, 'index'])->name('homepage')->middleware('auth');
+
+Route::get('/artists/{artist}', [ArtistController::class, 'show'])->name('artists.show');
 
 Route::get('/', function () {
-    return view('guest.welcome');
+    $songs = Song::with('artist')->get();
+    $artists = Artist::all();
+    $albums = Album::with('artist')->get();
+    $radios = Radio::all();
+    $charts = Chart::all();
+    $suggestions = Suggestion::all();
+    return view('guest.welcome', compact('songs', 'artists', 'albums', 'radios', 'charts', 'suggestions'));
 });
+
+// Route cho form đăng ký và đăng nhập đẹp
+Route::get('/dangky', function () {
+    return view('auth.dangky');
+})->name('dangky');
+
+Route::get('/dangnhap', function () {
+    return view('auth.dangnhap');
+})->name('dangnhap');
+
+Route::get('/khampha', function () {
+    return view('guest.khampha');
+})->name('khampha');
+
+Route::get('/vechungtoi', function () {
+    return view('guest.vechungtoi');
+})->name('vechungtoi');
