@@ -1,0 +1,132 @@
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(120deg, #232526 0%, #414345 100%);
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+.vechungtoi-container {
+    max-width: 900px;
+    margin: 40px auto;
+    background: rgba(30,34,45,0.98);
+    border-radius: 18px;
+    box-shadow: 0 8px 32px rgba(0,255,255,0.10);
+    padding: 40px 32px;
+    text-align: center;
+    color: #fff;
+    border: 2px solid #00fff7;
+    animation: fadeInUp 1.2s cubic-bezier(.39,.575,.56,1.000);
+}
+@keyframes fadeInUp {
+    0% { opacity: 0; transform: translateY(60px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+.music-wave {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    margin: 0 auto 18px auto;
+    width: max-content;
+}
+.music-wave span {
+    display: block;
+    width: 10px;
+    background: linear-gradient(120deg, #00fff7 0%, #007cf0 100%);
+    border-radius: 4px;
+    animation: wave 1.2s infinite ease-in-out;
+}
+.music-wave span:nth-child(1) { height: 18px; animation-delay: 0s; }
+.music-wave span:nth-child(2) { height: 28px; animation-delay: 0.2s; }
+.music-wave span:nth-child(3) { height: 38px; animation-delay: 0.4s; }
+.music-wave span:nth-child(4) { height: 28px; animation-delay: 0.6s; }
+.music-wave span:nth-child(5) { height: 18px; animation-delay: 0.8s; }
+@keyframes wave {
+    0%, 100% { transform: scaleY(1); }
+    50% { transform: scaleY(1.7); }
+}
+.vechungtoi-avatar {
+    width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 4px solid #00fff7;
+    box-shadow: 0 0 24px #00fff7, 0 2px 8px rgba(0,255,255,0.12);
+    margin-bottom: 12px;
+    animation: avatarGlow 2s infinite alternate;
+}
+@keyframes avatarGlow {
+    0% { box-shadow: 0 0 24px #00fff7, 0 2px 8px rgba(0,255,255,0.12); }
+    100% { box-shadow: 0 0 48px #00fff7, 0 2px 16px rgba(0,255,255,0.22); }
+}
+.vechungtoi-title {
+    font-size: 2.4rem;
+    font-weight: bold;
+    color: #00fff7;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+    text-shadow: 0 0 8px #00fff7;
+    animation: fadeInUp 1.2s 0.2s backwards;
+}
+.vechungtoi-role {
+    font-size: 1.2rem;
+    color: #00fff7;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+.vechungtoi-desc {
+    font-size: 1.1rem;
+    color: #e0e0e0;
+    margin-bottom: 18px;
+    animation: fadeInUp 1.2s 0.4s backwards;
+}
+.music-quote {
+    font-style: italic; color: #00fff7; margin-bottom: 18px; font-size: 1.1rem;
+    animation: fadeInUp 1.2s 0.6s backwards;
+}
+.vechungtoi-social {
+    display: flex; justify-content: center; gap: 18px; margin-bottom: 18px;
+}
+.vechungtoi-social a {
+    color: #00fff7; font-size: 2rem; transition: color 0.2s, transform 0.2s;
+}
+.vechungtoi-social a:hover {
+    color: #fff; transform: scale(1.2) rotate(-8deg);
+    text-shadow: 0 0 12px #00fff7;
+}
+.vechungtoi-slogan {
+    font-size: 1.15rem; color: #fff; margin-bottom: 18px; font-weight: 500;
+    animation: fadeInUp 1.2s 0.8s backwards;
+}
+.vechungtoi-team {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 28px;
+    justify-content: center;
+}
+.vechungtoi-member-card {
+    background: linear-gradient(120deg, #c2e9fb 0%, #a1c4fd 100%);
+    border-radius: 14px;
+    box-shadow: 0 4px 16px rgba(33,147,176,0.08);
+    padding: 28px 22px;
+    width: 220px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    color: #222;
+}
+.vechungtoi-member-card:hover {
+    transform: translateY(-8px) scale(1.04);
+    box-shadow: 0 8px 32px rgba(33,147,176,0.18);
+}
+.vechungtoi-member-name {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+.vechungtoi-member-role {
+    font-size: 1rem;
+    opacity: 0.85;
+}
+@media (max-width: 700px) {
+    .vechungtoi-team {
+        flex-direction: column;
+        align-items: center;
+    }
+    .vechungtoi-container {
+        padding: 18px 6px;
+    }
+}
