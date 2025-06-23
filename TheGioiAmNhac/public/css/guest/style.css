@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap');
+
 /*
 |--------------------------------------------------------------------------
 | Guest Styles (Spotify-inspired Dark Theme)
@@ -41,8 +43,13 @@ header {
 
 header .logo h1 {
     margin: 0;
-    font-size: 1.8em;
+    font-family: 'Audiowide', cursive; /* Apply the new font */
+    font-size: 2.5em; /* Make it larger for impact */
     color: var(--text-color);
+    font-weight: normal; /* Audiowide often looks good without extra bolding */
+    text-shadow: 0 0 12px rgba(255, 255, 255, 0.4); /* Slightly stronger glow */
+    letter-spacing: 2px; /* Increase letter spacing for style */
+    text-transform: uppercase; /* Make it uppercase for a strong brand look */
 }
 
 nav {
@@ -84,18 +91,45 @@ section h2 {
     font-size: 1.8em;
 }
 
+.carousel-wrapper {
+    position: relative;
+    display: block; /* Ensure it's a block-level container */
+    padding: 0 40px; /* Add padding to make space for the buttons inside the wrapper */
+}
+
 .card-container {
-    display: grid; /* Use grid for cards */
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Responsive grid */
+    display: flex; /* Use flex for horizontal scrolling */
+    flex-wrap: nowrap; /* Prevent cards from wrapping to the next line */
+    overflow-x: auto; /* Enable horizontal scrolling */
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    scroll-behavior: smooth; /* Smooth scroll on button click */
     gap: 20px; /* Space between grid items */
+    padding-bottom: 10px; /* Add some padding to see scrollbar if present */
+    scrollbar-width: none; /* Hide scrollbar for Firefox */
+    -ms-overflow-style: none;  /* Hide scrollbar for IE and Edge */
+}
+
+a.card-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.card-container::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for Chrome, Safari, Opera */
 }
 
 .card {
+    flex: 0 0 auto; /* Prevent cards from growing or shrinking */
+    width: 200px; /* Fixed width for cards */
+    min-width: 180px; /* Ensure a minimum width */
     background: var(--card-color); /* Card background */
     border-radius: 8px; /* Rounded corners */
     padding: 15px; /* Padding inside card */
     text-align: center; /* Center content */
     transition: background-color 0.3s ease; /* Smooth transition */
+    position: relative; /* Needed for absolute positioning of play button */
+    overflow: hidden; /* Hide anything outside the card, like overflow play button */
+    margin-bottom: 10px; /* Space below image */
 }
 
 .card:hover {
@@ -106,6 +140,12 @@ section h2 {
     width: 100%; /* Image takes full width of card */
     border-radius: 4px; /* Slightly rounded image corners */
     margin-bottom: 10px; /* Space below image */
+}
+
+.artist-card-image {
+    width: 180px;  /* Or a fixed size that fits your card design */
+    height: 180px; /* Make it a square */
+    object-fit: cover; /* This will cover the area, cropping if necessary */
 }
 
 .card h3 {
@@ -126,6 +166,93 @@ section h2 {
     text-overflow: ellipsis;
 }
 
+.card .play-button {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    background-color: var(--hover-color); /* Spotify green */
+    color: var(--text-color);
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+    cursor: pointer;
+    opacity: 0;
+    transform: translateY(20px); /* Start slightly below */
+    transition: all 0.3s ease; /* Smooth transition */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Subtle shadow */
+}
+
+.card:hover .play-button {
+    opacity: 1;
+    transform: translateY(0); /* Slide up to position */
+}
+
+.card .play-button svg {
+    width: 24px;
+    height: 24px;
+    fill: currentColor; /* Use the parent's color */
+}
+
+/* Responsive adjustments for play button */
+@media (max-width: 768px) {
+    .card .play-button {
+        width: 35px;
+        height: 35px;
+        font-size: 1.2em;
+        bottom: 10px;
+        right: 10px;
+    }
+}
+
+/* For next/previous buttons (conceptual for card-container carousel) */
+.carousel-wrapper .nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: opacity 0.3s ease;
+    background-color: rgba(0, 0, 0, 0.7); /* Make it more visible, but still transparent */
+    padding: 0; /* Remove padding from the button itself */
+    border: none; /* Remove default button border */
+    border-radius: 50%; /* Make it round again */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6); /* Add a subtle shadow */
+    transition: all 0.3s ease; /* Smooth transitions for all properties including scale */
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 999; /* Ensure buttons are on top */
+    opacity: 0; /* Hide by default */
+    color: var(--text-color); /* Explicitly set color for child SVG inheritance */
+}
+
+.carousel-wrapper:hover .nav-button {
+    opacity: 1; /* Show on hover */
+}
+
+.carousel-wrapper .nav-button.prev {
+    left: 50px; /* Adjusted further inwards */
+}
+
+.carousel-wrapper .nav-button.next {
+    right: 50px; /* Adjusted further inwards */
+}
+
+.carousel-wrapper .nav-button:hover {
+    background-color: rgba(0, 0, 0, 0.9); /* Even more opaque on direct hover */
+}
+
+.carousel-wrapper .nav-button svg {
+    width: 20px;
+    height: 20px;
+    fill: var(--text-color) !important; /* Ensure the SVG icons are white */
+}
+
 footer {
     text-align: center;
     padding: 30px 0; /* More padding */
@@ -143,7 +270,7 @@ footer {
     width: 40px; /* Size of the icon */
     height: 40px; /* Size of the icon */
     margin: 0 10px; /* Space between icons */
-    background-color: var(--card-color); /* Background color */
+    background-color: transparent; /* Changed to transparent */
     border-radius: 50%; /* Make it round */
     background-size: 60%; /* Size of the icon image */
     background-repeat: no-repeat;
@@ -156,14 +283,17 @@ footer {
 }
 
 .social-icon.instagram {
+    background-color: #E1306C; /* Instagram brand color */
     background-image: url('https://cdnjs.cloudflare.com/ajax/libs/simple-icons/6.1.0/instagram.svg');
 }
 
 .social-icon.twitter {
+    background-color: #1DA1F2; /* Twitter brand color */
     background-image: url('https://cdnjs.cloudflare.com/ajax/libs/simple-icons/6.1.0/twitter.svg');
 }
 
 .social-icon.facebook {
+    background-color: #1877F2; /* Facebook brand color */
     background-image: url('https://cdnjs.cloudflare.com/ajax/libs/simple-icons/6.1.0/facebook.svg');
 }
 
@@ -187,4 +317,105 @@ footer {
     .card-container {
         grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); /* Adjust grid for smaller screens */
     }
-} 
+}
+
+/* Custom Modal Styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 2000; /* Sit on top of everything */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.7); /* Darker overlay */
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background-color: #282828;
+    color: var(--text-color);
+    margin: 15% auto;
+    padding: 30px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 450px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.modal-icon {
+    margin-bottom: 20px;
+    color: var(--hover-color);
+}
+
+.modal-content h2 {
+    font-size: 1.6em;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.modal-content p {
+    font-size: 1em;
+    color: var(--link-color);
+    margin-bottom: 30px;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 50px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    font-size: 1em;
+}
+
+.btn-primary {
+    background-color: var(--hover-color);
+    color: var(--text-color);
+}
+
+.btn-primary:hover {
+    background-color: #1ed760;
+    transform: scale(1.05);
+}
+
+.btn-secondary {
+    background-color: #444;
+    color: var(--text-color);
+}
+
+.btn-secondary:hover {
+    background-color: #555;
+}
+
+.close-button {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    color: var(--link-color);
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-button:hover {
+    color: var(--text-color);
+}

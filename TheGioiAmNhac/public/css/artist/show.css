@@ -1,0 +1,77 @@
+/* General artist page styling */
+body {
+    background-color: #121212;
+    color: #ffffff;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.artist-header {
+    display: flex;
+    align-items: center;
+    padding: 40px;
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.9)), url('{{ asset($artist->image_path) }}') no-repeat center center;
+    background-size: cover;
+}
+
+.artist-image {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin-right: 40px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.artist-info h1 {
+    font-size: 4em;
+    font-weight: 900;
+    margin: 0;
+}
+
+.artist-description {
+    font-size: 1.1em;
+    margin-top: 10px;
+    color: #b3b3b3;
+    max-width: 600px;
+}
+
+/* Styling for the songs list */
+.artist-songs {
+    padding: 20px 40px;
+}
+
+.artist-songs h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.artist-songs ul {
+    list-style: none;
+    padding: 0;
+}
+
+.artist-songs li {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #282828;
+}
+
+.artist-songs li:last-child {
+    border-bottom: none;
+}
+
+.song-image {
+    width: 50px;
+    height: 50px;
+    margin-right: 20px;
+}
+
+.song-name {
+    font-size: 1.2em;
+}
+
+.main-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 20px;
+} 
