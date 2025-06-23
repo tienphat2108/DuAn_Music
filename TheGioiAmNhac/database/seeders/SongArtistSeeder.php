@@ -60,7 +60,7 @@ class SongArtistSeeder extends Seeder
             'image_path' => 'images/Zedd.jpg',
             'description' => 'Anton Zaslavski (2. 9. 1989), được biết đến với nghệ danh Zedd, là một nhà sản xuất thu âm, DJ và nhạc sĩ người Đức gốc Nga. Anh được biết đến với các bài hát như "Clarity", "Stay" và "The Middle".'
         ]);
-        
+
         // SONGS
         DB::table('songs')->insert([
             [
