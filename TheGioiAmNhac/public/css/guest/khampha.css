@@ -1,0 +1,149 @@
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(120deg, #232526 0%, #414345 100%);
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+.khampha-container {
+    max-width: 1000px;
+    margin: 40px auto;
+    background: rgba(30,34,45,0.98);
+    border-radius: 18px;
+    box-shadow: 0 8px 32px rgba(0,255,255,0.10);
+    padding: 40px 32px;
+    text-align: center;
+    color: #fff;
+    border: 2px solid #00fff7;
+    animation: fadeInUp 1.2s cubic-bezier(.39,.575,.56,1.000);
+}
+@keyframes fadeInUp {
+    0% { opacity: 0; transform: translateY(60px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+.music-wave {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    margin: 0 auto 18px auto;
+    width: max-content;
+}
+.music-wave span {
+    display: block;
+    width: 10px;
+    background: linear-gradient(120deg, #00fff7 0%, #007cf0 100%);
+    border-radius: 4px;
+    animation: wave 1.2s infinite ease-in-out;
+}
+.music-wave span:nth-child(1) { height: 18px; animation-delay: 0s; }
+.music-wave span:nth-child(2) { height: 28px; animation-delay: 0.2s; }
+.music-wave span:nth-child(3) { height: 38px; animation-delay: 0.4s; }
+.music-wave span:nth-child(4) { height: 28px; animation-delay: 0.6s; }
+.music-wave span:nth-child(5) { height: 18px; animation-delay: 0.8s; }
+@keyframes wave {
+    0%, 100% { transform: scaleY(1); }
+    50% { transform: scaleY(1.7); }
+}
+.khampha-title {
+    font-size: 2.8rem;
+    font-weight: bold;
+    color: #00fff7;
+    margin-bottom: 18px;
+    letter-spacing: 1px;
+    text-shadow: 0 0 8px #00fff7;
+}
+.music-quote {
+    font-style: italic; color: #00fff7; margin-bottom: 24px; font-size: 1.1rem;
+}
+.khampha-desc {
+    font-size: 1.2rem;
+    color: #e0e0e0;
+    margin-bottom: 32px;
+}
+.khampha-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 28px;
+    justify-content: center;
+}
+.khampha-feature-card {
+    background: linear-gradient(120deg, #007cf0 0%, #00fff7 100%);
+    border-radius: 14px;
+    box-shadow: 0 4px 16px rgba(0,255,255,0.08);
+    padding: 28px 22px;
+    width: 260px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    color: #232526;
+    opacity: 0;
+    transform: translateY(40px);
+}
+.khampha-feature-card.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.7s, transform 0.7s;
+}
+.khampha-feature-card:hover {
+    transform: translateY(-8px) scale(1.04);
+    box-shadow: 0 8px 32px rgba(0,255,255,0.18);
+}
+.khampha-feature-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #fff;
+}
+.khampha-feature-desc {
+    font-size: 1rem;
+    opacity: 0.92;
+    color: #fff;
+}
+.khampha-feature-card i {
+    font-size: 2.2rem; margin-bottom: 10px; display: block;
+    color: #00fff7; text-shadow: 0 0 8px #00fff7;
+    animation: iconPulse 1.5s infinite alternate;
+}
+@keyframes iconPulse {
+    0% { transform: scale(1); filter: brightness(1); }
+    100% { transform: scale(1.15); filter: brightness(1.3); }
+}
+.khampha-extra {
+    margin-top: 40px; padding: 32px 18px; background: rgba(0,255,255,0.07); border-radius: 18px;
+    box-shadow: 0 4px 24px rgba(0,255,255,0.10);
+    animation: fadeInUp 1.2s 0.5s backwards;
+}
+.khampha-extra-title {
+    font-size: 1.5rem; color: #00fff7; font-weight: bold; margin-bottom: 12px; text-shadow: 0 0 8px #00fff7;
+}
+.khampha-strengths {
+    display: flex; flex-wrap: wrap; gap: 24px; justify-content: center; margin-top: 18px;
+}
+.khampha-strength {
+    background: linear-gradient(120deg, #007cf0 0%, #00fff7 100%);
+    color: #232526;
+    border-radius: 12px;
+    padding: 18px 22px;
+    min-width: 180px;
+    font-weight: 500;
+    box-shadow: 0 2px 12px rgba(0,255,255,0.10);
+    display: flex; align-items: center; gap: 10px;
+    font-size: 1.08rem;
+    animation: fadeInUp 1.2s 0.7s backwards;
+}
+.khampha-strength i {
+    font-size: 1.5rem; color: #fff; text-shadow: 0 0 8px #fff;
+    animation: iconPulse 1.5s infinite alternate;
+}
+.khampha-slogan {
+    margin-top: 24px; font-size: 1.15rem; color: #fff; font-style: italic; text-align: center;
+    text-shadow: 0 0 8px #00fff7;
+    animation: fadeInUp 1.2s 0.9s backwards;
+}
+@media (max-width: 700px) {
+    .khampha-features, .khampha-strengths {
+        flex-direction: column;
+        align-items: center;
+    }
+    .khampha-container {
+        padding: 18px 6px;
+    }
+}
