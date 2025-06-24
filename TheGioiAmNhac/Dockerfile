@@ -12,6 +12,9 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 # Copy code vào container
 COPY . /var/www/html
 
+# Tạo thư mục storage và bootstrap/cache
+RUN mkdir -p /var/www/html/storage /var/www/html/bootstrap/cache
+
 # Cấp quyền cho storage và bootstrap/cache
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
 
