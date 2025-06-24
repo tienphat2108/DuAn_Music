@@ -19,7 +19,7 @@ RUN mkdir -p /var/www/html/storage /var/www/html/bootstrap/cache
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
 
 # Chạy composer install
-RUN composer install --no-dev --optimize-autoloader
+RUN COMPOSER_ALLOW_SUPERUSER=1 composer install --no-dev --optimize-autoloader
 
 # Bật mod_rewrite cho Laravel
 RUN a2enmod rewrite
